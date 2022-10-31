@@ -1,0 +1,1 @@
+ansible all -i inventory.ini -u yandex-vm-login -m ping
