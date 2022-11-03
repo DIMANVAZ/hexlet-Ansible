@@ -1,0 +1,8 @@
+ - hosts: news
+   tasks:
+    - name: install mc
+      ansible.builtin.apt:
+        name: mc
+        state: present
+        update_cache: yes
+#      become: yes
