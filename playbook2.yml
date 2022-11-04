@@ -1,0 +1,43 @@
+- hosts: both
+
+  tasks:
+    - name: install node.js
+      ansible.builtin.apt:
+        name: nodejs
+        state: present
+        update_cache: yes
+      become: yes
+      tags: [node, install]
+
+    - name: install Make
+      ansible.builtin.apt:
+        name: make
+        state: present
+        update_cache: yes
+      become: yes
+      tags: [make, install]
+
+    - name: create Group
+      ansible.builtin.group:
+        name: relatives
+        state: present
+      become: yes
+      tags: users
+
+    - name: Add the user 'Ostapa' with a bash shell, appending the group 'relatives' to the user's groups
+      ansible.builtin.user:
+        name: Ostapa
+        shell: /bin/bash
+        groups: relatives
+        append: yes
+      become: yes
+      tags: users
+
+    - name: Add the user 'Papafan' with a bash shell, appending the group 'relatives' to the user's groups
+      ansible.builtin.user:
+        name: Papafan
+        shell: /bin/bash
+        groups: relatives
+        append: yes
+      become: yes
+      tags: users

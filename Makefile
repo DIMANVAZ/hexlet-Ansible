@@ -1,12 +1,6 @@
-pingAll:
-	ansible all -i inventory.ini -u yandex-vm-login -m ping
+playbook:
+	ansible-playbook playbook.yml -i inventory.ini
 
-pingOldone:
-	ansible all --limit oldone -i inventory.ini -u yandex-vm-login -m ping
-
-sayHaha:
-	echo Haha
-
-createFile:
-	touch file.txt
+playbook2:
+	ansible-playbook playbook2.yml -i inventory.ini -t users
 
