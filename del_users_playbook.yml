@@ -1,0 +1,18 @@
+- hosts: both
+
+  tasks:
+    - name: Delete user Ostapa
+      ansible.builtin.user:
+        name: Ostapa
+        state: absent
+        remove: yes
+      become: yes
+      tags: [users, delete]
+
+    - name: Delete user Papafan
+      ansible.builtin.user:
+        name: Papafan
+        state: absent
+        remove: yes
+      become: yes
+      tags: [users, delete]
