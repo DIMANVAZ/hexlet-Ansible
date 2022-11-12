@@ -12,3 +12,9 @@ nginxWithVars:
 
 nginxShort:
 	ansible-playbook nginxShortPlaybook.yml -i inventory.ini
+
+inventoryGraph:
+	ansible-inventory -i inventory.ini --graph
+
+inventoryList:
+	ansible-inventory -i inventory.ini --list

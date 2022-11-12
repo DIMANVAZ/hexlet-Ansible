@@ -10,7 +10,7 @@
       become: yes
 
     - name: copy html file
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: files/index.html
         dest: "{{root_dir}}index.html"
       notify:
