@@ -7,8 +7,8 @@ playbook2:
 deleteUsers:
 	ansible-playbook del_users_playbook.yml -i inventory.ini -t users
 
-nginx:
-	ansible-playbook nginxPlaybook.yml -i inventory.ini
+nginxWithVars:
+	ansible-playbook nginxWithVarsPlaybook.yml -i inventory.ini
 
 nginxShort:
 	ansible-playbook nginxShortPlaybook.yml -i inventory.ini
