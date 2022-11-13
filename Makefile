@@ -30,3 +30,12 @@ usersCycleCreate:
 
 delUsersCycled:
 	ansible-playbook delUsersCycled.yml -i inventory.ini
+
+when:
+	ansible-playbook conditional.yml -i inventory.ini
+
+debugFilter:
+	ansible-playbook debugFilter.yml -i inventory.ini
+
+furp:
+	ansible-playbook filterUpperRegPlaybook.yml -i inventory.ini

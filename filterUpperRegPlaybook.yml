@@ -1,0 +1,26 @@
+# использование фактов, переменных и фильтров
+# создали файл-шаблон (стр.21), записали по машинам с учётом переменных. Проверил, всё получилось
+- hosts: both
+  vars:
+    web1: "{{ ansible_facts['nodename'] }}"
+    string: "this is server {{ web1 | upper }}"
+    date: "{{ ansible_date_time['date'] }}"
+  tasks:
+    - ansible.builtin.debug: msg={{ string }}
+    - ansible.builtin.debug: msg={{ web1 }}
+    - ansible.builtin.debug: msg={{ date }}
+
+    - name: Create a directory aJinjer
+      ansible.builtin.file:
+        path: /etc/aJinjer
+        state: directory
+      become: true
+
+    - name: copy html j2 file
+      ansible.builtin.template:
+        src: templates/index.html.j2
+        dest: ../../etc/aJinjer/index.html.j2
+#      manage_dir: false
+      become: true
+
+

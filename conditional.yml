@@ -1,0 +1,18 @@
+ - hosts: both
+   gather_facts: no
+   vars:
+     isWinter: false
+   tasks:
+   - name: Touch the Winter file
+     ansible.builtin.file:
+       path: /etc/winter.txt
+       state: touch
+     when: isWinter
+     become: true
+
+   - name: Touch the Autumn file
+     ansible.builtin.file:
+       path: /etc/autumn.txt
+       state: touch
+     when: not isWinter
+     become: true

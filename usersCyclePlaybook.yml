@@ -28,6 +28,9 @@
        become: yes
        loop: "{{ users }}"
 
+#      так делать не надо! Раскидывать ключи по хостам посредством Ansible
+#      это просто тренировка, по другим вещам
+
      - name: Set ssh keys for each user
        ansible.posix.authorized_key:
          user: "{{ item }}"
