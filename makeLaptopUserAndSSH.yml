@@ -1,0 +1,34 @@
+- hosts: both
+  gather_facts: no
+  vars:
+    users:
+      - laptop
+  tasks:
+    - name: create Group
+      ansible.builtin.group:
+        name: wheel
+        state: present
+      become: yes
+
+    - name: create users
+      ansible.builtin.user:
+        name: "{{ item }}"
+        groups: "wheel"
+        shell: /bin/bash
+        append: yes
+      become: yes
+      loop: "{{ users }}"
+
+    #      так делать не надо! Раскидывать ключи по хостам посредством Ansible
+    #      это просто тренировка, по другим вещам
+
+    - name: Set ssh keys for laptop
+      ansible.posix.authorized_key:
+        user: "{{ item }}"
+        state: present
+        key: "{{ lookup('file', 'files/laptop/id_rsa.pub') }}"
+        path: "../{{ item }}/.ssh/authorized_keys"
+        manage_dir: False
+      become: yes
+      loop: "{{ users }}"
+

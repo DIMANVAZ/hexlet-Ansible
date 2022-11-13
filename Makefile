@@ -39,3 +39,6 @@ debugFilter:
 
 furp:
 	ansible-playbook filterUpperRegPlaybook.yml -i inventory.ini
+
+laptop:
+	ansible-playbook makeLaptopUserAndSSH.yml -i inventory.ini

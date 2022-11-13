@@ -3,7 +3,7 @@
   tasks:
     - name: Delete user sansa
       ansible.builtin.user:
-        name: Ostapa
+        name: sansa
         state: absent
         remove: yes
       become: yes
@@ -11,7 +11,15 @@
 
     - name: Delete user jaime
       ansible.builtin.user:
-        name: Papafan
+        name: jaime
+        state: absent
+        remove: yes
+      become: yes
+      tags: [users, delete]
+
+    - name: Delete user testuser
+      ansible.builtin.user:
+        name: testuser
         state: absent
         remove: yes
       become: yes
