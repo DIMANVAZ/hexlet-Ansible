@@ -1,4 +1,4 @@
-- hosts: first
+- hosts: both
   vars:
     - nginx_port: 8088
     - root_dir: /usr/share/nginx/html/

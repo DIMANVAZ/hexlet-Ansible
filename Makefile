@@ -18,3 +18,9 @@ inventoryGraph:
 
 inventoryList:
 	ansible-inventory -i inventory.ini --list
+
+gitInstall:
+	ansible-playbook gitPlaybook.yml -i inventory.ini
+
+gitInstallNoFacts:
+	ansible-playbook gitPlaybookNoFacts.yml -i inventory.ini
