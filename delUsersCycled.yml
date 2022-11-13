@@ -1,0 +1,14 @@
+- hosts: both
+  vars:
+    users:
+      - jaime
+      - sansa
+      - robert
+
+  tasks:
+    - name: Delete users cycled
+      ansible.builtin.user:
+        name: "{{ users }}"
+        state: absent
+        remove: yes
+      become: yes

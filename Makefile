@@ -24,3 +24,9 @@ gitInstall:
 
 gitInstallNoFacts:
 	ansible-playbook gitPlaybookNoFacts.yml -i inventory.ini
+
+usersCycleCreate:
+	ansible-playbook usersCyclePlaybook.yml -i inventory.ini
+
+delUsersCycled:
+	ansible-playbook delUsersCycled.yml -i inventory.ini
