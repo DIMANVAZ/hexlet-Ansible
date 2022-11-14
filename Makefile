@@ -45,3 +45,6 @@ oneLocalUser:
 
 laptop:
 	ansible-playbook makeLaptopUserAndSSH.yml -i inventory.ini
+
+cowsay:
+	ansible-playbook nginxWithVarsPlaybook.yml -i inventory.ini
