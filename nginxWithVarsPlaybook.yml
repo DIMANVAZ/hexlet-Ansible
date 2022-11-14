@@ -2,12 +2,33 @@
   vars:
     - nginx_port: 8088
     - root_dir: /usr/share/nginx/html/
+      web1: "{{ ansible_facts['nodename'] }}"
+      string: "this is server {{ web1 | upper }}"
+      date: "{{ ansible_date_time['date'] }}"
+
   tasks:
     - name: install nginx
       ansible.builtin.apt:
         name: nginx
         state: latest
       become: yes
+
+    - name: install cowsay
+      ansible.builtin.apt:
+        name: cowsay
+        state: latest
+      become: yes
+
+    - name: save cowsay
+      ansible.builtin.shell: cowsay "Hello, from web server!"
+      register: cowsayResult
+
+    - name: copy html j2 file
+      ansible.builtin.template:
+        src: templates/index.html.j2
+        dest: ../../etc/aJinjer/index.html.j2
+      #      manage_dir: false
+      become: true
 
     - name: copy html file
       ansible.builtin.template:

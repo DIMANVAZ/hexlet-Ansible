@@ -1,0 +1,21 @@
+ - hosts: local
+   gather_facts: no
+   vars:
+     users:
+       - laptop
+   tasks:
+#     - name: create Group
+#       ansible.builtin.group:
+#         name: wheel
+#         state: present
+##       become: yes
+
+     - name: create user
+       ansible.builtin.user:
+         name: "{{ item }}"
+         groups: "wheel"
+         shell: /bin/bash
+         append: yes
+       become: yes
+       loop: "{{ users }}"
+
