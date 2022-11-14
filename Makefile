@@ -34,9 +34,6 @@ delUsersCycled:
 when:
 	ansible-playbook conditional.yml -i inventory.ini
 
-debugFilter:
-	ansible-playbook debugFilter.yml -i inventory.ini
-
 furp:
 	ansible-playbook filterUpperRegPlaybook.yml -i inventory.ini
 
@@ -48,3 +45,9 @@ laptop:
 
 cowsay:
 	ansible-playbook nginxWithVarsPlaybook.yml -i inventory.ini
+
+debugFilter:
+	ansible-playbook debugFilter.yml -i inventory.ini
+
+debugFilterExt:
+	ansible-playbook debugFilterExtTasks.yml -i inventory.ini

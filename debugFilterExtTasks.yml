@@ -1,0 +1,12 @@
+#пример про includes \ import
+- hosts: all
+  gather_facts: no
+  vars:
+    path: /var/log/upstart/nginx.log
+
+  tasks:
+     - name: set of debug tasks
+       ansible.builtin.include_tasks: extDebugTasks.yml
+
+- name: import playbook !
+  ansible.builtin.import_playbook: debugFilter.yml
