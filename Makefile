@@ -46,8 +46,16 @@ laptop:
 cowsay:
 	ansible-playbook nginxWithVarsPlaybook.yml -i inventory.ini
 
+# тренируемся с фильтрами
 debugFilter:
 	ansible-playbook debugFilter.yml -i inventory.ini
 
 debugFilterExt:
 	ansible-playbook debugFilterExtTasks.yml -i inventory.ini
+
+# тренируемся с ansible-vault.
+testVault:
+	ansible-playbook debugFilter.yml -i inventory.ini --ask-vault-pass
+
+testVaultSavedPass:
+	ansible-playbook debugFilter.yml -i inventory.ini --vault-password-file ./password
